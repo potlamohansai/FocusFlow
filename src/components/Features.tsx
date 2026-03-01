@@ -1,4 +1,4 @@
-import { Box, Typography, Grid, Paper } from "@mui/material";
+import { Box, Typography, Paper } from "@mui/material";
 import TimerIcon from "@mui/icons-material/Timer";
 import BlockIcon from "@mui/icons-material/Block";
 import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
@@ -24,13 +24,30 @@ const Features = () => {
 
   return (
     <Box sx={{ backgroundColor: "#f5f5f5", py: 6 }}>
-      <Typography variant="h4" align="center" gutterBottom>
+      <Typography variant="h4" align="center" gutterBottom color="text.primary">
         Features
       </Typography>
 
-      <Grid container spacing={4} justifyContent="center" sx={{ px: 4 }}>
+      {/* Flex Container */}
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: 4,
+          px: 4,
+        }}
+      >
         {features.map((feature, index) => (
-          <Grid item xs={12} md={4} key={index}>
+          <Box
+            key={index}
+            sx={{
+              width: {
+                xs: "100%",
+                md: "30%",
+              },
+            }}
+          >
             <Paper sx={{ p: 4, textAlign: "center", borderRadius: 3 }}>
               {feature.icon}
               <Typography variant="h6" mt={2}>
@@ -40,9 +57,9 @@ const Features = () => {
                 {feature.desc}
               </Typography>
             </Paper>
-          </Grid>
+          </Box>
         ))}
-      </Grid>
+      </Box>
     </Box>
   );
 };
